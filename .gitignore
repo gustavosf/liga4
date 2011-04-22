@@ -1,0 +1,8 @@
+*.tar
+*.gz
+*.zip
+*.pdf
+*.bak
+
+build/
+assets/
