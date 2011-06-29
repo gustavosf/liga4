@@ -1,0 +1,112 @@
+body {
+	font-family: helvetica;
+	font-size: 80%;
+	background-color: #141414;
+}
+
+#container {
+	position:absolute;
+	width: 700px; left:50%; margin-left:-350px;
+	height: 588px; top:50%; margin-top:-304px;
+	border:20px solid black;
+	border-radius:10px;
+}
+
+/********************************************************/
+/**                       Shadow                       **/
+/********************************************************/
+
+div.shadow {
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color:black;
+	background: rgba(0,0,0,0.8);
+	color:white;
+}
+
+div.shadow > #result, #rules {
+	position:absolute;
+	width:500px; margin-left:-250px; left:50%;
+	height:667px; margin-top:-334px; top:50%;
+	overflow:none;
+}
+
+div.shadow > #result {
+	display:none;
+	color: white;
+	font-size:150%;
+	text-align:center;
+}
+
+div.shadow > #result > h1 {
+	font-size:300%;
+	margin-top:333px;
+}
+
+div.shadow > #rules > img {
+	margin-bottom:20px;
+}
+
+div.shadow > #rules > h1 {
+	background-color:black;
+	font-size:150%;
+	text-align:center;
+	padding:10px 20px 10px 20px;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+}
+div.shadow > #rules > h2 {
+	background-color:#111;
+	font-size:100%;
+	text-align:center;
+	padding:5px 10px 5px 10px;
+}
+
+div.shadow > #rules > select {
+	color:white;
+	background-color:#333;
+	border:0;
+	padding:10px;
+	font-size:125%;
+	width:100%;
+	outline:0;
+	cursor:pointer;
+}
+
+div.shadow > #rules > button {
+	background-color:rgba(255,255,255,.6);
+	border:1px solid black;
+	color:black;
+	width:100%;
+	border:0;
+	padding:10px;
+	font-size:125%;
+	cursor:pointer;
+}
+
+/********************************************************/
+/**                       Board                        **/
+/********************************************************/
+
+.board {
+	width:700px;
+	outline:2px solid #333;
+}
+
+.board > div {
+	display:inline-block;
+	background:url('../img/bg.png');
+	width:100px;
+	height:100px;
+	margin:0px 0px -5px 0px;
+	cursor:pointer;
+}
+
+.board div.red {
+	background:url('../img/bg-r.png');
+}
+
+.board div.yellow {
+	background:url('../img/bg-y.png');
+}

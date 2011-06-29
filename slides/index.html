@@ -1,0 +1,160 @@
+<!-- Apresentação do trabalho de Inteligência Artificial
+  -- Autor: Gustavo Seganfredo
+  -- 28 Jun, 2011
+  --
+  -- Melhor visualizado utilizando Chrome, Safari ou Firefox 4+
+  -->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>INF01048 - Inteligência Artificial - Liga4</title>
+
+	<meta charset='utf-8'>
+	<script src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
+	<style>
+		article.biglogo {
+			background:url(img/logo-inf.png) 50% 50% no-repeat;
+		}
+		.slides.template-inf > article:not(.nobackground):not(.biglogo) {
+			background: url(img/redbar.png) 0 693px repeat-x,
+						url(img/logo-inf-small.png) 750px 605px no-repeat;
+			background-size: 100%, 134px;
+			background-color: white;  
+		}
+	
+	</style>
+</head>
+  
+<body style='display: none'>
+
+	<section class='slides layout-regular template-inf'>
+	  
+		<article class='biglogo'></article>
+
+		<article>
+			<h1>Inteligência Artificial<br>Liga 4</h1>
+			<p>Gustavo Seganfredo<br>29 Jan, 2011</p>
+		</article>
+	  
+		<article>
+			<p><img class='centered' style='height: 550px' src='img/liga4-face.jpg'></p>
+		</article>
+	  
+		<article>
+			<p><img class='centered' style='height: 550px' src='img/liga4-play.jpg'></p>
+		</article>
+
+		<article class="smaller">
+			<h2>
+				http://inf.ufrgs.br/~gsfarias/liga4<br>
+				http://inf.ufrgs.br/~gsfarias/liga4/slides
+			</h2>
+			<ul class="build">
+				<li>Notepad</li>
+				<li>Chrome (v8)</li>
+				<li>Javascript, CSS, HTML</li>
+				<li>WebWorkers<br />
+					Separar interface e processamento</li>
+			</ul>
+			<div class="build">
+				<table>
+					<tr><th>Chrome</th><th>Firefox</th><th>Opera</th><th>Safari</th></tr>
+					<tr><td>3</td><td>3.5.19</td><td>10.6</td><td>3</td></tr>
+				</table>
+				
+				<p style='color:#ccc'>Internet Explorer ainda não se dignou</p>
+			</div>
+		</article>
+		
+		<article>
+			<h3>MiniMax</h3>
+			<p>
+				<ul>
+					<li>Algorítmo tradicional</li>
+					<li>Sem corte alfa/beta</li>
+					<li>Profundidade ditada pela dificuldade (hard = 6 níveis)</li>
+				</ul>
+				<pre>
+maxmove(board, lvl) =
+    if lvl == 0 return aval()
+    max = -WIN - 1
+    foreach valid_move in board
+        min = minmove(board + valid_move, lvl - 1)
+        if min > max
+            max = min
+            move = valid_move
+    return max
+	
+minmove(board, lvl) = 
+    ...</pre>
+			</p>
+		</article>
+
+		<article>
+			<h3>Matriz de Jogadas</h3>
+			<p>Registra todas as possíveis jogadas de vitória, para cada posição do tabuleiro</p>
+			<pre>
+// Matriz de jogadas
+// [row, col, muda_row, muda_col, peso]
+jogadas = [
+    [0, 0, 0, 1, 2],
+    [0, 0, 1, 0, 1],
+    [0, 0, 1, 1, 1],
+    [0, 1, 0, 1, 2],
+    [0, 1, 1, 0, 1],
+    [0, 1, 1, 1, 1],
+    [0, 2, 0, 1, 2],
+    ...
+    [5, 3, -1, 1, 1],
+    [5, 3,  0, 1, 1]];
+
+jogadas.length === 60</pre>
+		</article>
+
+		<article>
+			<h3>Matriz de Jogadas</h3>
+			<p class='build'>
+				<img src='img/jogadas.jpg' style='height:550px; position:fixed' />
+				<img src='img/jogadas-desc-1.jpg' style='height:550px; position:fixed' />
+				<img src='img/jogadas-desc-2.jpg' style='height:550px; position:fixed' />
+			</p>
+		</article>
+		
+		<article class='smaller'>
+			<h3>Função de Avaliação</h3>
+			<pre>
+aval(player) ->
+    a = 0
+    foreach jogada
+        foreach posicao
+            p_seq = (max pecas player em sequencia)
+            a_seq = (max pecas ¬player em sequencia)
+            a += str(p_seq, a_seq)
+    return a
+		
+str(p1, p2) ->
+    x = 0
+	
+    if (p1 == 1) x += 1
+    if (p1 == 2) x += 10
+    if (p1 == 3) x += 100 - p2 * 20
+    if (p1 == 4) x = WIN
+    
+    if (p2 == 1) x -= 1
+    if (p2 == 2) x -= 10
+    if (p2 == 3) x += 100 - p1 * 20
+    if (p2 == 4) x = -WIN
+    return x</pre>
+		</article>
+
+		<article>
+			<h1>Inteligência Artificial<br>Liga 4</h1>
+			<p>Gustavo Seganfredo<br>29 Jan, 2011</p>
+		</article>
+
+	</section>
+
+</body>
+
+</html>
